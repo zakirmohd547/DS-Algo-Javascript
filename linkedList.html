@@ -1,0 +1,197 @@
+//linked list work as a node
+//for example every node we have head and tail
+/**
+*
+* let head= {value:100,next:{value:200,next:null}}
+* first object will be head and last will be tail
+*
+*/
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        class Lists {
+            constructor(data) {
+                this.head = {
+                    value: data,
+                    next: null
+                }
+                this.tail = this.head;
+                this.size = 1;
+            }
+
+            addNewNode(newNode) {
+                let newNodeVal = { value: newNode, next: null }
+                this.tail.next = newNodeVal;
+                this.tail = newNodeVal;
+                this.size += 1
+            }
+
+            traversingNode(updateVal) {
+                let counter = 0;
+                let currentNode = this.head;
+                while (counter < this.size) {
+
+                    if (counter == updateVal - 1) {
+                        currentNode.value = 20
+                    }
+                    currentNode = currentNode.next;
+                    console.log(currentNode);
+
+                    counter++
+                }
+            }
+            // removeNode(index){
+            //     let counter=1;
+            //     let lead=this.head;
+            //     if(index==1){
+            //         this.head=this.head.next
+            //     }else{
+            //         while(counter<index-1){
+            //             lead=lead.next;
+            //             counter++
+            //         }
+            //         let nextNode=lead.next.next;
+            //         lead.next=nextNode;
+            //         console.log(lead)
+            //     }
+            // }
+
+            // removeNode(index){
+            //     let counter=1;
+            //     let lead=this.head;
+            //     if(index==1){
+            //         this.head=this.head.next
+            //     }else{
+            //         while(counter<index-1){
+            //             lead=lead.next;
+            //             counter++;
+            //         }
+            //         let nextNode=lead.next.next;
+            //         lead.next=nextNode;
+            //         console.log(counter);
+            //         console.log(lead)
+            //     }
+            // }
+            // newRemoveNode(index) {
+            //     let counter = 1;
+            //     let leadNode = this.head;
+            //     if (index == 1) {
+            //         leadNode = this.head.next
+            //     } else {
+            //         while (counter < index - 1) {
+            //             console.log("lead", leadNode);
+            //             leadNode = leadNode.next
+            //             counter++;
+            //         }
+            //         let nextNode = leadNode.next.next;
+            //         leadNode.next = nextNode
+            //     }
+            //     // console.log("new node called",leadNode);
+            // }
+            // insertNode(index,value) {
+            //     let counter=0;
+            //     let currentNode=this.head;
+            //     while(index>counter){
+            //         counter++
+            //         console.log("currentNode",currentNode)
+            //         currentNode=currentNode.next;
+            //     }
+            //     let nextNode=currentNode.next
+            //     currentNode.next={
+            //         value:value,
+            //         next:nextNode
+            //     }
+            // }
+
+            removeNode(index){
+                let counter=1;
+                let leadNode=this.head;
+                if(index==1){
+                    leadNode=this.head.next
+                }else{
+                    while(counter<index-1){
+                        leadNode=leadNode.next
+                        counter++
+                    }
+                    let nextNode=leadNode.next.next;
+                    leadNode.next=nextNode
+                }
+            }
+            inserNode(index,value){
+                let counter=1;
+                let currentNode=this.head;
+                while(counter>index){
+                    currentNode=currentNode.next;
+                    console.log("currentNode",currentNode)
+                    counter++;
+                }
+                let nextNode=currentNode.next;
+                console.log("nextNode",nextNode)
+                currentNode.next={
+                    value:value,
+                    next:nextNode
+                }
+            }
+
+            searchNodeWithElement(element){
+                let currentNode=this.head;
+                let counter=1;
+                let result=undefined;
+                while(counter<this.size){
+                    currentNode=currentNode.next;
+                    // console.log("currentNode",currentNode)
+                    // loop=!!currentNode.value;
+                    if(counter==element){
+                        result=currentNode
+                    }
+                    counter++
+                }
+                return result;
+            }
+            // searchNode(data){
+            //     let currentNode=this.head;
+            //     let loop=true;
+            //     let result=undefined;
+            //     while(loop){
+            //         currentNode=currentNode.next;
+            //         // console.log("currentNode",currentNode)
+            //         loop=!!currentNode.value;
+            //         if(loop && currentNode.value==data){
+            //             loop=false;
+            //             result=currentNode
+            //         }
+            //     }
+            //     return result;
+            // }
+
+        }
+
+        let ListInstance = new Lists(100);
+        ListInstance.addNewNode(200)
+        ListInstance.addNewNode(300)
+        ListInstance.addNewNode(400)
+        ListInstance.addNewNode(500)
+        // ListInstance.traversingNode(2)
+        ListInstance.inserNode(5,5000)
+        // ListInstance.removeNode(1)
+        // ListInstance.removeNode(3)
+
+        console.log(ListInstance)
+        // console.log("===",ListInstance.searchNode(400))
+        console.log("===",ListInstance.searchNodeWithElement(2))
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

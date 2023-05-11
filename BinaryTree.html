@@ -1,0 +1,64 @@
+//binary tree
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binary Tree</title>
+    <script>
+        class NodeVal {
+            constructor(values) {
+                this.value = values;
+                this.left = null;
+                this.right = null;
+            }
+        }
+        class BTS {
+            constructor() {
+                this.root = null
+            }
+            makeTree(data) {
+                let nodeValData = new NodeVal(data)
+                if (this.root == null) {
+                    this.root = nodeValData
+                }else{
+                    this.insertNode(this.root,nodeValData);
+                }
+            }
+
+            insertNode(root,nodeValData){
+                if(root.value>nodeValData.value){
+                    if(root.left==null){
+                        root.left=nodeValData
+                    }else{
+                        this.insertNode(root.left,nodeValData);
+                    }
+                }else{
+                    if(root.right==null){
+                        root.right=nodeValData
+                    }else{
+                        this.insertNode(root.right,nodeValData);
+                    }
+                }
+            }
+        }
+
+        let BTSExp = new BTS();
+        BTSExp.makeTree(20)
+        BTSExp.makeTree(10)
+        BTSExp.makeTree(5)
+        BTSExp.makeTree(30)
+        BTSExp.makeTree(40)
+        BTSExp.makeTree(11)
+
+        console.log(BTSExp)
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

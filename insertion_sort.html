@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insertion Sort</title>
+</head>
+<body>
+    <script>
+        // sort array
+        // let arrayData=[11,15,4,5,7];
+        // function insertionSort(data){
+        //     let i, j, currentValue;
+        //     for(i=1; i<data.length; i++){
+        //         currentValue=data[i];
+        //         j=i-1;
+        //         while(j>=0 && data[j]>currentValue){
+        //             data[j+1]=data[j];
+        //             j--;
+        //         }
+        //         data[j+1]=currentValue
+            
+        //     }
+        // }
+        // insertionSort(arrayData)
+        // console.log(arrayData)
+
+        let newArr=[5,15,17,19,6];
+        function reverseSort(data){
+            let i,j,currentValue;
+            for(i=1;i<data.length; i++){
+                currentValue=data[i];
+                j=i-1;
+                while(j>=0 && data[j]<currentValue){
+                    data[j+1]=data[j];
+                    j--;
+                }
+                data[j+1]=currentValue;
+            }
+        }
+        reverseSort(newArr);
+        console.log(newArr);
+    </script>
+    
+</body>
+</html>

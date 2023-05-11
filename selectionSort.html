@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // let arr=[10,20,5,13,25,31,56,79,78,15];
+        // function selectionSort(data){
+        //     let mid;
+        //     for(let i=0; i<data.length; i++){
+        //         mid=i;
+        //         for(let j=i+1; j<data.length; j++){
+        //             if(data[j]<data[mid]){
+        //                 mid=j;
+        //             }
+        //         }
+        //         let temp=data[mid];
+        //         data[mid]=data[i];
+        //         data[i]=temp
+        //     }
+        // }
+        // selectionSort(arr);
+        // console.log(arr)
+
+        // selection reverse sort
+        let newArr=[10,20,35,84];
+        function reverseArraySort(data){
+            let mid;
+            for(let i=0; i<data.length; i++){
+                mid=i;
+                for(j=i+1; j<data.length; j++){
+                    if(data[j]>data[mid]){
+                        mid=j
+                    }
+                }
+                let temp=data[mid];
+                data[mid]=data[i]
+                data[i]=temp
+            }
+        }
+        reverseArraySort(newArr);
+        console.log(newArr)
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
