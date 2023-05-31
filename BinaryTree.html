@@ -43,6 +43,96 @@
                     }
                 }
             }
+
+            searchNodeBTS(root,value){
+                if(root==null){
+                    return false;
+                }else if(root.value===value){
+                    return true;
+                }else if(root.value>value){
+                   return this.searchNodeBTS(root.left,value);
+                }else{
+                    return this.searchNodeBTS(root.right,value)
+                }
+            }
+
+            preOrderSearch(root){
+                if(root){
+                    console.log(root.value)
+                    this.preOrderSearch(root.left)
+                    this.preOrderSearch(root.right)
+                }
+            }
+            inOrderSearch(root){
+                if(root){
+                    this.inOrderSearch(root.left)
+                    console.log(root.value)
+                    this.inOrderSearch(root.right)
+                }
+            }
+            postOrderSearch(root){
+                if(root){
+                    this.postOrderSearch(root.left)
+                    this.postOrderSearch(root.right)
+                    console.log(root.value)
+                }
+            }
+            depbthFirstSearch(){
+                let queue=[];
+                queue.push(this.root);
+                console.log("this.root",this.root)
+                while(queue.length){
+                    let current=queue.shift();
+                    if(current.left){
+                        queue.push(current.left)
+                    }
+                    if(current.right){
+                        queue.push(current.right)
+                    }
+                    console.log(current.value)
+                }
+            }
+
+            mininumNodeVal(root){
+                if(root.left==null){
+                    return root.value;
+                }else{
+                    return this.mininumNodeVal(root.left)
+                }
+            }
+            maxNodeValue(root){
+                if(root.right==null){
+                    return root.value;
+                }else{
+                    return this.maxNodeValue(root.right)
+                }
+            }
+
+            removeData(value){
+              this.root=this.deleteNode(this.root,value);                  
+            }
+            deleteNode(root,value){
+                if(root===null){
+                    return null;
+                }else if(value<root.value){
+                    root.left=this.deleteNode(root.left,value)
+                }else if(value>root.value){
+                    root.right=this.deleteNode(root.right,value)
+                }else{
+                    if(!root.left && !root.right){
+                        return null;
+                    }else if(!root.left){
+                        return root.right;
+                    }else if(!root.right){
+                        return root.left;
+                    }else{
+                        root.value=this.mininumNodeVal(root.right);
+                        root.right=this.deleteNode(root.right,value);
+                    }
+                }
+                return root;
+            }
+
         }
 
         let BTSExp = new BTS();
@@ -50,10 +140,21 @@
         BTSExp.makeTree(10)
         BTSExp.makeTree(5)
         BTSExp.makeTree(30)
+        BTSExp.makeTree(23)
         BTSExp.makeTree(40)
         BTSExp.makeTree(11)
 
-        console.log(BTSExp)
+        // console.log(BTSExp)
+        // console.warn(BTSExp.searchNodeBTS(BTSExp.root,11))
+        // BTSExp.preOrderSearch(BTSExp.preOrderSearch(BTSExp.root))
+        // BTSExp.inOrderSearch(BTSExp.inOrderSearch(BTSExp.root))
+        // BTSExp.postOrderSearch(BTSExp.postOrderSearch(BTSExp.root))
+        // // BTSExp.depbthFirstSearch()
+        // console.warn(BTSExp.mininumNodeVal(BTSExp.root))
+        // console.warn(BTSExp.maxNodeValue(BTSExp.root))
+        // console.warn()BTSExp.removeData(5)
+        BTSExp.removeData(20)
+        console.warn(BTSExp.root)
     </script>
 </head>
 
